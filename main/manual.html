@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XR 滅火訓練設備｜系統操作手冊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161d;
+    --card: #1a1e28;
+    --border: #252a38;
+    --accent: #ff4d1c;
+    --accent2: #ff8c42;
+    --text: #e8ecf4;
+    --text-muted: #7a8299;
+    --text-dim: #4a5168;
+    --green: #22c55e;
+    --yellow: #f59e0b;
+    --blue: #3b82f6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 40px 56px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,77,28,.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 3px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 88px);
+    letter-spacing: .04em;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    letter-spacing: .06em;
+    margin-bottom: 32px;
+  }
+  .hero-company {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: .1em;
+  }
+
+  /* ── NAV SIDEBAR ── */
+  .layout { display: flex; max-width: 1100px; margin: 0 auto; padding: 40px 24px; gap: 40px; }
+
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 24px;
+    align-self: flex-start;
+  }
+  .sidebar-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    padding-left: 12px;
+  }
+  .sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+  .sidebar a {
+    display: block;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    border-radius: 0 4px 4px 0;
+    transition: all .2s;
+  }
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--text);
+    border-left-color: var(--accent);
+    background: rgba(255,77,28,.07);
+  }
+  .sidebar a .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-right: 6px;
+  }
+
+  /* ── CONTENT ── */
+  .content { flex: 1; min-width: 0; }
+
+  /* Section */
+  .section {
+    margin-bottom: 56px;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--accent);
+    line-height: 1;
+    min-width: 32px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--text);
+  }
+
+  /* Sub-section */
+  .subsection { margin-bottom: 32px; }
+  .subsection-title {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .subsection-title::before {
+    content: '';
+    display: block;
+    width: 18px; height: 2px;
+    background: var(--accent2);
+    flex-shrink: 0;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  /* Image placeholder */
+  .img-placeholder {
+    background: var(--bg2);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: .04em;
+    padding: 32px 20px;
+    margin: 16px 0;
+    transition: border-color .2s;
+    cursor: default;
+    min-height: 160px;
+  }
+  .img-placeholder:hover { border-color: var(--accent); }
+  .img-placeholder svg { opacity: .35; }
+  .img-placeholder .img-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: .1em;
+  }
+  .img-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+
+  /* Steps */
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--accent);
+    line-height: 1.2;
+    min-width: 28px;
+  }
+  .step-body { flex: 1; }
+  .step-body p { font-size: 14px; color: var(--text-muted); }
+  .step-body strong { color: var(--text); font-weight: 500; }
+
+  /* Alert / Notice */
+  .notice {
+    border-left: 3px solid var(--yellow);
+    background: rgba(245,158,11,.07);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+  .notice.danger { border-left-color: var(--accent); background: rgba(255,77,28,.07); }
+  .notice.success { border-left-color: var(--green); background: rgba(34,197,94,.07); }
+  .notice .notice-title {
+    font-weight: 500;
+    color: var(--yellow);
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .notice.danger .notice-title { color: var(--accent); }
+  .notice.success .notice-title { color: var(--green); }
+
+  /* Parts list */
+  .parts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 16px 0; }
+  .part-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .part-item .part-icon { font-size: 22px; margin-bottom: 6px; }
+  .part-item .part-name { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+  .part-item img { width: 100%; height: 110px; object-fit: contain; border-radius: 4px; margin-bottom: 8px; background: var(--bg); }
+
+  /* URL code */
+  .url-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--blue);
+    margin: 10px 0;
+    word-break: break-all;
+  }
+
+  /* Parts numbered list */
+  .parts-list {
+    list-style: none;
+    counter-reset: parts;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0 4px;
+  }
+  .parts-list li {
+    counter-increment: parts;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+    padding: 10px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .parts-list li::before {
+    content: counter(parts);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--accent);
+    min-width: 20px;
+    line-height: 1;
+  }
+
+  /* Spec table */
+  .spec-table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+  .spec-table td {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    border-bottom: 1px solid var(--border);
+  }
+  .spec-table td:first-child {
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    width: 40%;
+  }
+  .spec-table td:last-child { color: var(--text-muted); }
+  .spec-table tr:last-child td { border-bottom: none; }
+
+  /* responsive */
+  @media (max-width: 760px) {
+    .layout { flex-direction: column; padding: 24px 16px; }
+    .sidebar { width: 100%; position: static; }
+    .hero { padding: 40px 20px 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">操作手冊 · v2025.09</div>
+    <h1>XR <span>滅火</span><br>訓練設備</h1>
+    <div class="hero-sub">系統操作手冊 · System Operation Manual</div>
+    <div class="hero-company">金宏安全顧問有限公司</div>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title">目錄</div>
+    <nav>
+      <a href="#env"><span class="num">01</span>操作環境</a>
+      <a href="#device"><span class="num">02</span>設備介紹</a>
+      <a href="#vr"><span class="num">  </span>虛擬設備</a>
+      <a href="#extinguisher"><span class="num">  </span>滅火訓練設備</a>
+      <a href="#clean"><span class="num">  </span>清潔與注意事項</a>
+      <a href="#ops"><span class="num">03</span>系統操作</a>
+      <a href="#boundary"><span class="num">  </span>劃定邊界</a>
+      <a href="#wifi"><span class="num">  </span>網路連線</a>
+      <a href="#cast"><span class="num">  </span>畫面投放</a>
+      <a href="#app"><span class="num">  </span>使用訓練程式</a>
+    </nav>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- ── SECTION 1 操作環境 ── -->
+    <section class="section" id="env">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div class="section-title">操作環境</div>
+      </div>
+
+      <div class="notice">
+        <div class="notice-title">⚠ 使用前確認</div>
+        使用前請確認以下環境條件均已具備，避免訓練中途中斷。
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <p>須在有<strong>穩定 Wi-Fi</strong> 的環境下操作。</p>
+            <p>不建議使用 iTaiwan 等公共熱點。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <p>須備妥可以開啟以下網頁的通訊設備：</p>
+            <div class="url-box">https://www.oculus.com/casting/</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <p>須備妥可以<strong>登入 META 帳號</strong>的通訊設備。</p>
+            <p>務必保留申請當時的帳號及密碼。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <p>清空活動區域，戴上頭戴式裝置前，確保不會接觸物件，並在活動區域周圍留有<strong>緩衝空間</strong>。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 2 設備介紹 ── -->
+    <section class="section" id="device">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div class="section-title">設備介紹</div>
+      </div>
+
+      <!-- 虛擬設備 -->
+      <div class="subsection" id="vr">
+        <div class="subsection-title">虛擬設備（Oculus Quest 3S）</div>
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/meta-quest-3s.png" alt="Oculus Quest 3S 全圖" style="width:100%;border-radius:8px;margin:16px 0;">
+          <div class="parts-grid">
+            <div class="part-item">
+              <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/q3_controller.png" alt="操控桿">
+              <div class="part-name">操控桿</div>
+            </div>
+            <div class="part-item">
+              <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/q3s_headset.png" alt="頭戴裝置">
+              <div class="part-name">頭戴裝置</div>
+            </div>
+            <div class="part-item">
+              <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/q3_extend_bettery.png" alt="頭戴式電池">
+              <div class="part-name">頭戴式電池</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 滅火訓練設備 -->
+      <div class="subsection" id="extinguisher">
+        <div class="subsection-title">滅火訓練設備</div>
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/vr_fire_extinguisher_controller.png" alt="滅火訓練設備組合圖" style="width:100%;border-radius:8px;margin:16px 0;">
+          <ol class="parts-list">
+            <li>滅火器底座</li>
+            <li>滅火器空瓶</li>
+            <li>前端操控桿 <span style="color:var(--text-dim);font-size:12px;">（皮管端）</span></li>
+            <li>啟動壓桿片</li>
+            <li>組裝支架</li>
+            <li>後端操控桿 <span style="color:var(--text-dim);font-size:12px;">（把手端）</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- 清潔與注意事項 -->
+      <div class="subsection" id="clean">
+        <div class="subsection-title">清潔 Meta Quest 頭戴式裝置和控制器</div>
+
+        <div class="notice danger">
+          <div class="notice-title">🚫 禁止事項</div>
+          VR 頭盔<strong>不能直射陽光</strong>——即使短時間陽光直射，也可能通過鏡片聚焦光線，對相機面板、鏡片和內部螢幕造成<strong>永久性損壞</strong>。請勿將裝置放在陽光直射的地方。
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body"><p>每次使用後，以<strong>乾燥的超細纖維拭鏡布</strong>清潔。請勿使用化學清潔劑。</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body"><p>若需進一步清潔，可稍微弄濕拭鏡布邊角擦除表面屑。<strong>請避免裝置受潮。</strong></p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body"><p>清潔頭戴式裝置鏡頭：從<strong>鏡頭中央</strong>開始，以畫圓方式輕輕向外擦拭。</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body"><p>清潔臉部靠墊、彈性頭帶、頭墊和矽膠護罩：使用超細纖維拭鏡布擦拭表面碎屑。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3 系統操作 ── -->
+    <section class="section" id="ops">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div class="section-title">系統操作</div>
+      </div>
+
+      <!-- 劃定邊界 -->
+      <div class="subsection" id="boundary">
+        <div class="subsection-title">劃定指定邊界（滅火所需範圍）</div>
+
+        <div class="notice success">
+          <div class="notice-title">📐 操作範圍規格</div>
+          需要 <strong>3 公尺 × 7 公尺</strong> 的操作範圍，長邊 7 公尺為滅火行進方向。
+        </div>
+
+        <div class="img-placeholder" style="min-height:200px;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="3" y="7" width="18" height="10" rx="1" stroke-dasharray="3 2"/>
+            <path d="M3 12h18M12 7v10"/><path d="M6 7v-2M18 7v-2M3 10H1M23 10h-2"/>
+          </svg>
+          <div class="img-label">圖片預留位置 — 操作範圍示意圖（3m × 7m）</div>
+        </div>
+      </div>
+
+      <!-- 網路連線 -->
+      <div class="subsection" id="wifi">
+        <div class="subsection-title">網路連線</div>
+
+        <div class="notice">
+          <div class="notice-title">📡 重要提醒</div>
+          電腦及 Oculus 必須連上<strong>相同的無線網路</strong>，才能順利進行畫面投放。
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <p>請選擇<strong>無線網路訊號良好</strong>的環境進行操作。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <p>點選下方功能表的「<strong>連線</strong>」圖標。</p>
+              <div class="img-placeholder" style="min-height:120px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+                <div class="img-label">圖片預留位置 — 功能表「連線」圖標截圖</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <p>叫出「連線」選單後，點選 <strong>Wi-Fi 功能</strong>。</p>
+              <div class="img-placeholder" style="min-height:120px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+                <div class="img-label">圖片預留位置 — Wi-Fi 選單截圖</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body"><p>選擇要連線的<strong>無線網路名稱</strong>，進行連線。</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 畫面投放 -->
+      <div class="subsection" id="cast">
+        <div class="subsection-title">畫面投放</div>
+
+        <div class="notice danger">
+          <div class="notice-title">🔑 帳號提醒</div>
+          電腦及 Oculus 須登入<strong>相同的臉書帳號或 Email</strong>。務必保留申請當時的 Email 帳號及密碼。
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <p>將電腦連上以下網址：</p>
+              <div class="url-box">https://www.oculus.com/casting/</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <p>確認電腦及 Oculus 登入<strong>相同帳號</strong>。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <p>點選下方功能表的「<strong>相機</strong>」。</p>
+              <div class="img-placeholder" style="min-height:120px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                <div class="img-label">圖片預留位置 — 功能表「相機」圖標截圖</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <p>點選「相機」選單後，點選「<strong>投放</strong>」功能。</p>
+              <div class="img-placeholder" style="min-height:120px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                <div class="img-label">圖片預留位置 — 投放選項截圖</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <p>選擇投放至「<strong>網頁</strong>」。</p>
+              <div class="img-placeholder" style="min-height:120px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                <div class="img-label">圖片預留位置 — 選擇「網頁」截圖</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 使用訓練程式 -->
+      <div class="subsection" id="app">
+        <div class="subsection-title">使用滅火訓練程式（Fire Away XR）</div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <p>點選下方功能表的「<strong>應用程式資料庫</strong>」。</p>
+              <div class="img-placeholder" style="min-height:120px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <div class="img-label">圖片預留位置 — 應用程式資料庫截圖</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <p>叫出「應用程式資料庫」後，點開左方的「<strong>不明來源</strong>」。</p>
+              <div class="img-placeholder" style="min-height:120px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+                <div class="img-label">圖片預留位置 — 不明來源資料夾截圖</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <p>點選 <strong>Fire Away XR</strong> 啟動訓練程式。</p>
+              <div class="notice success" style="margin-top:10px;">
+                <div class="notice-title">💡 快捷提示</div>
+                已開啟過 Fire Away XR 後，快捷圖標即會出現在功能表中，可直接點選啟動。
+              </div>
+              <div class="img-placeholder" style="min-height:120px;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <div class="img-label">圖片預留位置 — Fire Away XR 應用程式圖標截圖</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /section 3 -->
+
+  </main>
+</div>
+
+<script>
+  // Highlight active sidebar link on scroll
+  const sections = document.querySelectorAll('[id]');
+  const links = document.querySelectorAll('.sidebar a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
