@@ -724,6 +724,15 @@
   </main>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-label" id="lightbox-label"></div>
+  </div>
+</div>
+
 <script>
   // Highlight active sidebar link on scroll
   const sections = document.querySelectorAll('[id]');
@@ -765,14 +774,5 @@
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner">
-    <button class="lightbox-close" id="lightbox-close">✕</button>
-    <img id="lightbox-img" src="" alt="">
-    <div class="lightbox-label" id="lightbox-label"></div>
-  </div>
-</div>
 </body>
 </html>
