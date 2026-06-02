@@ -305,6 +305,30 @@
   .part-item { cursor: pointer; transition: border-color .2s, transform .15s; }
   .part-item:hover { border-color: var(--accent); transform: translateY(-2px); }
 
+  /* Feature list */
+  .feature-list { display: flex; flex-direction: column; gap: 10px; }
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .feature-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .feature-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding-left: 2px;
+    line-height: 1.7;
+  }
+
   /* Lightbox */
   .lightbox {
     display: none;
@@ -464,6 +488,8 @@
       <a href="#wifi"><span class="num">  </span>網路連線</a>
       <a href="#cast"><span class="num">  </span>畫面投放</a>
       <a href="#app"><span class="num">  </span>使用訓練程式</a>
+      <a href="#program"><span class="num">04</span>程式操作</a>
+      <a href="#features"><span class="num">  </span>功能介紹</a>
     </nav>
   </aside>
 
@@ -759,6 +785,55 @@
       </div>
 
     </section><!-- /section 3 -->
+
+    <!-- ── SECTION 4 滅火訓練程式操作 ── -->
+    <section class="section" id="program">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div class="section-title">滅火訓練程式操作</div>
+      </div>
+
+      <div class="subsection" id="features">
+        <div class="subsection-title">功能介紹</div>
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/main_menu.png" alt="主選單畫面" style="width:100%;border-radius:8px;margin-bottom:16px;">
+          <p style="font-size:14px;color:var(--text-muted);line-height:2;margin-bottom:16px;">
+            進入程式後主選單會有<strong>完整模式</strong>、<strong>簡易模式</strong>、<strong>序號設定</strong>及<strong>版本切換</strong>。
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-label">
+                <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/x_btn.png" alt="X按鈕" style="height:1.4em;vertical-align:middle;margin-right:6px;">
+                <strong>簡易模式</strong>
+              </div>
+              <div class="feature-desc">場景只有單層油盤及電線火災，固定使用乾粉滅火器的簡易操作模式。</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-label">
+                <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/y_btn.png" alt="Y按鈕" style="height:1.4em;vertical-align:middle;margin-right:6px;">
+                <strong>完整模式</strong>
+              </div>
+              <div class="feature-desc">有完整 15 種場景選擇，在開始滅火前須自行選擇滅火器的完整操作模式。</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-label">
+                <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/function_btn.png" alt="功能按鈕" style="height:1.4em;vertical-align:middle;margin-right:6px;">
+                <strong>序號設定</strong>
+              </div>
+              <div class="feature-desc">進行序號更換使用。</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-label">
+                <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/a_btn.png" alt="A按鈕" style="height:1.4em;vertical-align:middle;margin-right:6px;">
+                <strong>版本切換</strong>
+              </div>
+              <div class="feature-desc">於 Quest 3 版本及 Quest 2 版本間切換使用。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /section 4 -->
 
   </main>
 </div>
