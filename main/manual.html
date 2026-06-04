@@ -526,11 +526,18 @@
       <a href="#wifi"><span class="num">  </span>網路連線</a>
       <a href="#cast"><span class="num">  </span>畫面投放</a>
       <a href="#app"><span class="num">  </span>使用訓練程式</a>
+      <a href="#dev-mode"><span class="num">  </span>開發人員模式</a>
       <a href="#program"><span class="num">04</span>程式操作</a>
       <a href="#features"><span class="num">  </span>功能介紹</a>
       <a href="#ez-mode"><span class="num">  </span>簡易模式流程</a>
       <a href="#full-mode"><span class="num">  </span>完整模式流程</a>
       <a href="#stats-mode"><span class="num">  </span>統計模式</a>
+      <a href="#troubleshoot"><span class="num">05</span>疑難排解</a>
+      <a href="#no-cast"><span class="num">  </span>無法投影</a>
+      <a href="#controller-lost"><span class="num">  </span>操控桿消失/定位錯誤</a>
+      <a href="#server-loading"><span class="num">  </span>卡在伺服器啟動中</a>
+      <a href="#angle-error"><span class="num">  </span>滅火器噴嘴角度異常</a>
+      <a href="#no-unknown-source"><span class="num">  </span>找不到不明來源選項</a>
     </nav>
   </aside>
 
@@ -831,6 +838,56 @@
             <div class="step-body">
               <p>點選 <strong>Fire Away XR</strong> 啟動訓練程式。</p>
               <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/q3_library_openapp.png" alt="Fire Away XR 啟動" style="width:100%;border-radius:8px;margin:10px 0;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 開啟開發人員模式 -->
+      <div class="subsection" id="dev-mode">
+        <div class="subsection-title">開啟開發人員模式</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <p>確保設備保持<strong>開機狀態</strong>，並已透過<strong>藍牙</strong>與手機的 <strong>Meta Horizon App</strong> 連線配對。</p>
+              <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+                <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;">
+                  <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;letter-spacing:.08em;">ANDROID</div>
+                  <a href="https://play.google.com/store/apps/details?id=com.oculus.twilight&hl=zh_TW" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);text-decoration:none;word-break:break-all;">https://play.google.com/store/apps/details?id=com.oculus.twilight&hl=zh_TW</a>
+                </div>
+                <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;">
+                  <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;letter-spacing:.08em;">IOS</div>
+                  <a href="https://apps.apple.com/tw/app/meta-horizon/id1366478176" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);text-decoration:none;word-break:break-all;">https://apps.apple.com/tw/app/meta-horizon/id1366478176</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <p>開啟手機 App，點擊左上「<strong>功能表</strong>」中的「<strong>裝置</strong>」。</p>
+              <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/horizon_1.png" alt="Meta Horizon App 功能表裝置" style="width:100%;border-radius:8px;margin-top:10px;">
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <p>選取裝置，並等待連線狀態顯示「<strong>已連線</strong>」。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <p>向下滾動選單並點擊「<strong>頭戴式裝置設定</strong>」。</p>
+              <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/horizon_2.png" alt="頭戴式裝置設定畫面" style="width:100%;border-radius:8px;margin-top:10px;">
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <p>點選「<strong>開發者模式</strong>」並將開關切換至「<strong>開啟</strong>」。</p>
+              <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/horizon_3.png" alt="開發者模式開關畫面" style="width:100%;border-radius:8px;margin-top:10px;">
             </div>
           </div>
         </div>
@@ -1332,6 +1389,93 @@
       </div>
 
     </section><!-- /section 4 -->
+
+    <!-- ── SECTION 5 疑難排解 ── -->
+    <section class="section" id="troubleshoot">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div class="section-title">疑難排解</div>
+      </div>
+
+      <div class="subsection" id="no-cast">
+        <div class="subsection-title">無法投影</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <p>請確保您登入的帳號與瀏覽器上的帳號相同。您可以前往 <a href="https://www.oculus.com/casting" target="_blank" style="color:var(--accent);text-decoration:none;">oculus.com/casting</a> 登入。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <p>確保頭戴式裝置與您要投放內容的裝置已連線至<strong>相同的 Wi-Fi 網路</strong>，網路連線請參照 <a href="#wifi" style="color:var(--accent);text-decoration:none;">系統操作 → 網路連線</a>。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection" id="controller-lost">
+        <div class="subsection-title">操控桿消失／定位錯誤</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <p>當虛擬操控桿消失或位置與虛擬畫面中的位置不符時，請將<strong>操控桿高舉至頭戴裝置前</strong>，頭戴裝置將會自動重新捕捉操控桿位置。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <p>更換操控桿的<strong>電池</strong>。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <p>如果反覆嘗試上述方式，依然無法正確定位，可能是<strong>操作環境光源不足</strong>，建議更換操作環境後嘗試。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection" id="server-loading">
+        <div class="subsection-title">卡在伺服器啟動中</div>
+        <div class="card">
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.9;">
+            程式伺服器若一陣子無人使用會進入<strong>休眠</strong>，因此打開 APP 時會出現「<strong>伺服器啟動中</strong>」的字樣。當從休眠啟動會須要等待 <strong>2–30 秒</strong>，為正常現象。
+          </p>
+        </div>
+      </div>
+
+      <div class="subsection" id="angle-error">
+        <div class="subsection-title">滅火器噴嘴的角度異常</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <p>可能是操控桿定位錯誤，請參照 <a href="#controller-lost" style="color:var(--accent);text-decoration:none;">疑難排解 → 操控桿消失／定位錯誤</a>。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <p>請在主畫面檢查是否調整到錯誤的 Quest 版本，請參照 <a href="#features" style="color:var(--accent);text-decoration:none;">滅火訓練程式操作 → 功能介紹 → 版本切換</a>。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection" id="no-unknown-source">
+        <div class="subsection-title">資料庫的功能表中找不到不明來源選項</div>
+        <div class="card">
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.9;">
+            請檢查並重新開啟設備的<strong>開發人員模式</strong>，請參照 <a href="#dev-mode" style="color:var(--accent);text-decoration:none;">系統操作 → 開發人員模式</a>。
+          </p>
+        </div>
+      </div>
+
+    </section><!-- /section 5 -->
 
   </main>
 </div>
