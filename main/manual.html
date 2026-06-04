@@ -310,6 +310,35 @@
   .part-item { cursor: pointer; transition: border-color .2s, transform .15s; }
   .part-item:hover { border-color: var(--accent); transform: translateY(-2px); }
 
+  /* Scene table collapsible */
+  .scene-table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .scene-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--card);
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    user-select: none;
+    transition: background .15s;
+  }
+  .scene-table-header:hover { background: var(--border); }
+  .scene-arrow {
+    font-size: 11px;
+    color: var(--accent);
+    transition: transform .25s;
+  }
+  .scene-arrow.open { transform: rotate(90deg); }
+  .scene-table-body { background: var(--bg2); }
+
   /* Feature list */
   .feature-list { display: flex; flex-direction: column; gap: 10px; }
   .feature-item {
@@ -1102,6 +1131,31 @@
             <div class="step-body">
               <p style="font-weight:500;color:var(--text);margin-bottom:10px;">開始滅火訓練</p>
               <p style="margin-bottom:12px;">完整模式在進行滅火前需要選擇滅火器，使用前端控制桿對準選項 2 秒即可選擇。<span style="color:var(--text-dim);font-size:12px;">（部分場景選擇到錯誤的滅火器會直接判定失敗）</span></p>
+              <div class="scene-table-wrap">
+                <div class="scene-table-header" onclick="toggleScene(this)">
+                  <span>各場景所使用對應滅火器</span>
+                  <span class="scene-arrow">▶</span>
+                </div>
+                <div class="scene-table-body" style="display:none;">
+                  <table class="spec-table" style="margin:0;">
+                    <tr><td>1. 單層油盤場景</td><td>所有滅火器皆可</td></tr>
+                    <tr><td>2. 雙層油盤場景</td><td>所有滅火器皆可</td></tr>
+                    <tr><td>3. 障礙物油盤 1 場景</td><td>所有滅火器皆可</td></tr>
+                    <tr><td>4. 障礙物油盤 2 場景</td><td>所有滅火器皆可</td></tr>
+                    <tr><td>5. 水泥牆前油盤場景</td><td>所有滅火器皆可</td></tr>
+                    <tr><td>6. 廚房油鍋場景</td><td style="color:var(--yellow);">僅可使用住宅用滅火器</td></tr>
+                    <tr><td>7. 廚房瓦斯桶場景</td><td style="color:var(--yellow);">（需先選擇關閉瓦斯）不可用二氧化碳滅火器</td></tr>
+                    <tr><td>8. 客廳延長線場景</td><td>所有滅火器皆可</td></tr>
+                    <tr><td>9. 客廳電器場景</td><td>所有滅火器皆可</td></tr>
+                    <tr><td>10. 戶外機車場景</td><td style="color:var(--yellow);">不可用二氧化碳滅火器</td></tr>
+                    <tr><td>11. 戶外紙箱場景</td><td style="color:var(--yellow);">不可用二氧化碳滅火器</td></tr>
+                    <tr><td>12. B 類油桶場景</td><td>所有滅火器皆可</td></tr>
+                    <tr><td>13. 工廠加熱設備場景</td><td style="color:var(--yellow);">不可用二氧化碳滅火器</td></tr>
+                    <tr><td>14. 工廠馬達風管場景</td><td style="color:var(--yellow);">不可用二氧化碳滅火器</td></tr>
+                    <tr><td>15. 工廠機台內部場景</td><td style="color:var(--yellow);">不可用二氧化碳滅火器</td></tr>
+                  </table>
+                </div>
+              </div>
               <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/choose_fe.png" alt="選擇滅火器" style="width:100%;border-radius:8px;margin-bottom:16px;">
               <p style="margin-bottom:12px;">選擇完滅火器後即可開始操作滅火器進行滅火，滅火途中可以看到畫面會顯示一些操作資訊。</p>
               <img src="https://raw.githubusercontent.com/Rappy13/Fire_Away_XR_Manual/main/site_img/game_info.png" alt="開始滅火訓練畫面" style="width:100%;border-radius:8px;margin-bottom:12px;">
@@ -1305,6 +1359,15 @@
     });
   }, { rootMargin: '-30% 0px -60% 0px' });
   sections.forEach(s => observer.observe(s));
+
+  // Scene table toggle
+  function toggleScene(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.scene-arrow');
+    const isOpen = body.style.display !== 'none';
+    body.style.display = isOpen ? 'none' : 'block';
+    arrow.classList.toggle('open', !isOpen);
+  }
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');
